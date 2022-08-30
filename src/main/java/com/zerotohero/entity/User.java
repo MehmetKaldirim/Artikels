@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Where(clause = "is_deleted=false")
+@Table(name="users")
 public class User extends BaseEntity{
 
 
@@ -20,8 +21,7 @@ public class User extends BaseEntity{
     @Column(unique = true, nullable = false)
     private String email;
     private String password;
-    private String phone;
     private Boolean enabled;
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Role role;
 }
